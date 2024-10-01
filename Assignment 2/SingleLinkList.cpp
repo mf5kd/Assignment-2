@@ -40,6 +40,19 @@ int SingleLinkList::size() {
     return NumOfIndexs + 1;
 }
 
+int SingleLinkList::find(string d) {
+
+    Node* tempPtr = headPtr;
+    while (tempPtr->data != d) {
+        if (tempPtr == nullptr) {
+            return size();
+        }
+        tempPtr = tempPtr->nextPtr;
+    }
+
+    return tempPtr->ID;
+}
+
 void SingleLinkList::printNode(int id) {
     Node* tempPtr = headPtr;
     while (tempPtr->ID != id) {
@@ -135,6 +148,28 @@ bool SingleLinkList::pop_front() {
 }
 
 void SingleLinkList::insert(int id, string d) {
+    if (headPtr == nullptr) {
+        push_back(d);
+        return;
+    }
+
+    Node* tempPtr = headPtr;
+    while (tempPtr->ID != id-1) {
+        tempPtr = tempPtr->nextPtr;
+    }
+
+    Node* newNode = new Node;
+    newNode->data = d;
+    newNode->nextPtr = tempPtr->nextPtr;
+    newNode->ID = id;
+    tempPtr->nextPtr = newNode;
+
+    tempPtr = tempPtr->nextPtr->nextPtr;
+    while (tempPtr != nullptr) {
+        tempPtr->ID++;
+        tempPtr = tempPtr->nextPtr;
+    }
+    NumOfIndexs++;
 
 }
 

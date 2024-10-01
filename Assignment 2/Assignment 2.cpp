@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <vector>
 #include "SingleLinkList.h"
+#include "VectorStack.h"
 
 using namespace std;
 
@@ -28,10 +29,24 @@ int main()
     fin.close();
 
     SingleLinkList SList(fileData);
+    VectorStack VStack;
 
     cout << "Single Link List\n";
     cout << SList.front()->data << endl;
     cout << SList.back()->data << endl;
     cout << SList.size() << endl;
     SList.printList();
+    
+    cout << "Vector Stack\n";
+
+
+    
+    for (int x = 0; x < 10; x++) {
+        VStack.push(x);
+    }
+
+    VStack.printStack();
+    
+    
+
 }
