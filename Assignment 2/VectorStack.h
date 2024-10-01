@@ -19,5 +19,6 @@ public:
 	int& top();
 	bool empty();
 	int size();
+	float average();
 
 };

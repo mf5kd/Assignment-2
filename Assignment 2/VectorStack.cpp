@@ -29,7 +29,16 @@ int VectorStack::size() {
 }
 
 void VectorStack::printStack() {
-	for (int x = 0; x < size(); x++) {
-		cout << container[x] << endl;
+	for (int x = size(); x > 0; x--) {
+		cout << container[x-1] << "|";
 	}
+	cout << endl;
+}
+
+float VectorStack::average() {
+	float a = 0;
+	for (int x = 0; x < size(); x++) {
+		a += container[x];
+	}
+	return a / size();
 }
